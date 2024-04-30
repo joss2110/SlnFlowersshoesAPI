@@ -1,4 +1,9 @@
+using PrjFlowersshoesAPI.DAO;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<TallasDAO>();
+builder.Services.AddScoped<ColoresDAO>();
 
 // Add services to the container.
 
