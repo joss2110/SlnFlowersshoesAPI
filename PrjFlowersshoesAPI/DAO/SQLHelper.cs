@@ -169,14 +169,50 @@ using System.Collections;
     /// <param name="commandType">el CommandType (procedimiento almacenado, texto, etc.)</param>
     /// <param name="commandText">el nombre del procedimiento almacenado o comando T-SQL</param>
     /// <returns>una cadena que representa el número de filas afectadas por el comando</returns>
+
     public static string ExecuteNonQuery2(string connectionString, string spName, params object[] parameterValues)
     {
-        // Se llama al método que ejecuta la consulta y devuelve el número de filas afectadas.
-        int rowsAffected = ExecuteNonQuery(connectionString, spName, parameterValues);
+        // Creamos una variable para almacenar el mensaje retornado por el procedimiento almacenado.
+        string message = "";
 
-        // Se convierte el número de filas afectadas en una cadena.
-        return rowsAffected.ToString();
+        // Creamos una conexión a la base de datos.
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            // Abrimos la conexión.
+            connection.Open();
+
+            // Creamos un comando para ejecutar el procedimiento almacenado.
+            using (SqlCommand command = new SqlCommand(spName, connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Agregamos los parámetros al comando.
+                if (parameterValues != null)
+                {
+                    for (int i = 0; i < parameterValues.Length; i++)
+                    {
+                        // Agregamos los parámetros proporcionados al comando.
+                        command.Parameters.AddWithValue($"@param{i}", parameterValues[i]);
+                    }
+                }
+
+                // Agregamos un parámetro de salida para el mensaje.
+                SqlParameter messageParameter = new SqlParameter("@message", SqlDbType.VarChar, 100);
+                messageParameter.Direction = ParameterDirection.Output;
+                command.Parameters.Add(messageParameter);
+
+                // Ejecutamos el comando.
+                command.ExecuteNonQuery();
+
+                // Obtenemos el mensaje de retorno del procedimiento almacenado.
+                message = Convert.ToString(command.Parameters["@message"].Value);
+            }
+        }
+
+        // Retornamos el mensaje obtenido del procedimiento almacenado.
+        return message;
     }
+
 
     /// <summary>
     /// Execute a SqlCommand (that returns no resultset) against the database specified in the connection string 
