@@ -4,6 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<TallasDAO>();
 builder.Services.AddScoped<ColoresDAO>();
+builder.Services.AddScoped<TrabajadoresDAO>();
+builder.Services.AddScoped<RolesDAO>();
 
 // Add services to the container.
 
