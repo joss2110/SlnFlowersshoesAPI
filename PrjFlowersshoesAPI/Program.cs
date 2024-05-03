@@ -1,3 +1,4 @@
+using FlowersshoesCoreMVC.DAO;
 using PrjFlowersshoesAPI.DAO;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,8 @@ builder.Services.AddScoped<TallasDAO>();
 builder.Services.AddScoped<ColoresDAO>();
 builder.Services.AddScoped<TrabajadoresDAO>();
 builder.Services.AddScoped<RolesDAO>();
+builder.Services.AddScoped<StocksDAO>();
+builder.Services.AddScoped<ProductosDAO>();
 
 // Add services to the container.
 
