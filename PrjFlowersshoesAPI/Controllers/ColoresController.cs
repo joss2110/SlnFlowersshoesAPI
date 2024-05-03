@@ -27,6 +27,8 @@ namespace PrjFlowersshoesAPI.Controllers
         [HttpPost("GrabarColor")]
         public async Task<ActionResult<string>> GrabarColor([FromBody] Colores obj)
         {
+
+
             string mensaje = await Task.Run(() => daocolor.GrabarColor(obj));
             return Ok(mensaje);
         }

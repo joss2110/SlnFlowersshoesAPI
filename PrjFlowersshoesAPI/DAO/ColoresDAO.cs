@@ -33,13 +33,18 @@ namespace PrjFlowersshoesAPI.DAO
             return list;
         }
 
+
+
         public string GrabarColor(Colores obj)
         {
             string mensaje = "";
 
+            List<KeyValuePair<string, object>> parametros = new List<KeyValuePair<string, object>>();
+            parametros.Add(new KeyValuePair<string, object>("@color", obj.color));
+
             try
             {
-                mensaje = SqlHelper.ExecuteNonQuery2(cad_sql, "PA_GRABAR_COLOR", obj.color);
+                mensaje = SqlHelper.ExecuteNonQuery2(cad_sql, "PA_GRABAR_COLOR", parametros);
             }
             catch (Exception ex)
             {
@@ -53,9 +58,13 @@ namespace PrjFlowersshoesAPI.DAO
         {
             string mensaje = "";
 
+            List<KeyValuePair<string, object>> parametros = new List<KeyValuePair<string, object>>();
+            parametros.Add(new KeyValuePair<string, object>("@idcolor", obj.idcolor));
+            parametros.Add(new KeyValuePair<string, object>("@color", obj.color));
+
             try
             {
-                mensaje = SqlHelper.ExecuteNonQuery2(cad_sql, "PA_MODIFICAR_COLOR", obj.idcolor, obj.color);
+                mensaje = SqlHelper.ExecuteNonQuery2(cad_sql, "PA_MODIFICAR_COLOR", parametros);
             }
             catch (Exception ex)
             {
