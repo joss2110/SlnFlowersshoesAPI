@@ -71,7 +71,7 @@ namespace PrjFlowersshoesAPI.DAO
             return mensaje;
         }
 
-        public string PA_ELIMINAR_PRODUCTOS(int idpro)
+        public string EliminarProducto(int idpro)
         {
             string mensaje = "";
             try
