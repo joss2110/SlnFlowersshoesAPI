@@ -57,5 +57,16 @@ namespace PrjFlowersshoesAPI.Controllers
             return Ok(mensaje);
         }
 
+        // RESTAURAR
+        // http://localhost:5050/api/TrabajadoresAPI/RestaurarTrabajadores/4
+        [HttpDelete("RestaurarTrabajadores/{id}")]
+        public async Task<ActionResult<String>> RestaurarTrabajadores(int id)
+        {
+            string mensaje = await Task.Run(() => daotra.RestaurarTrabajador(id));
+            //
+            return Ok(mensaje);
+        }
+
+
     }
 }

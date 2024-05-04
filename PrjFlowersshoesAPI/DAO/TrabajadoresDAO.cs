@@ -85,5 +85,20 @@ namespace PrjFlowersshoesAPI.DAO
             return mensaje;
         }
 
+        public string RestaurarTrabajador(int idtra)
+        {
+            string mensaje = "";
+            try
+            {
+                SqlHelper.ExecuteNonQuery(cad_sql, "PA_RESTAURAR_TRABAJADORES", idtra);
+                mensaje = $"Se restauro correctamente al Trabajador: {idtra}";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+            //
+            return mensaje;
+        }
     }
 }
