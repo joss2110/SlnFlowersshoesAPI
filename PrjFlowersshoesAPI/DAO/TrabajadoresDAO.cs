@@ -40,10 +40,19 @@ namespace PrjFlowersshoesAPI.DAO
         public string GrabarTrabajador(Trabajadores obj)
         {
             string mensaje = "";
+
+            List<KeyValuePair<string, object>> parametros = new List<KeyValuePair<string, object>>();
+            parametros.Add(new KeyValuePair<string, object>("@nombres", obj.nombres));
+            parametros.Add(new KeyValuePair<string, object>("@tipoDocumento", obj.tipoDocumento));
+            parametros.Add(new KeyValuePair<string, object>("@nroDocumento", obj.nroDocumento));
+            parametros.Add(new KeyValuePair<string, object>("@direccion", obj.direccion));
+            parametros.Add(new KeyValuePair<string, object>("@email", obj.email));
+            parametros.Add(new KeyValuePair<string, object>("@pass", obj.pass));
+            parametros.Add(new KeyValuePair<string, object>("@idrol", obj.idrol));
+
             try
             {
-                SqlHelper.ExecuteNonQuery(cad_sql, "PA_GRABAR_TRABAJADORES", obj.nombres, obj.tipoDocumento, obj.nroDocumento, obj.direccion, obj.email, obj.pass, obj.idrol);
-                mensaje = $"Se registro al Trabajador: {obj.nombres} correctamente";
+                mensaje = SqlHelper.ExecuteNonQuery2(cad_sql, "PA_GRABAR_TRABAJADORES", parametros);
             }
             catch (Exception ex)
             {
