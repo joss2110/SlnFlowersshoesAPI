@@ -9,6 +9,7 @@ builder.Services.AddScoped<TrabajadoresDAO>();
 builder.Services.AddScoped<RolesDAO>();
 builder.Services.AddScoped<StocksDAO>();
 builder.Services.AddScoped<ProductosDAO>();
+builder.Services.AddScoped<IngresosDAO>();
 
 // Add services to the container.
 
