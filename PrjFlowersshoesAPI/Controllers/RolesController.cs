@@ -7,11 +7,11 @@ namespace PrjFlowersshoesAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RolesAPIController : ControllerBase
+    public class RolesController : ControllerBase
     {
         private readonly RolesDAO daorol;
 
-        public RolesAPIController(RolesDAO daoRol)
+        public RolesController(RolesDAO daoRol)
         {
             daorol = daoRol;
         }
