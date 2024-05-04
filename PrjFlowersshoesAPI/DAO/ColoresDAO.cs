@@ -73,5 +73,22 @@ namespace PrjFlowersshoesAPI.DAO
 
             return mensaje;
         }
+
+        public string EliminarColor(int id)
+        {
+            string mensaje = "";
+
+            try
+            {
+                SqlHelper.ExecuteNonQuery(cad_sql, "PA_LISTAR_COLORES", id);
+                mensaje = "Color Eliminado correctamente";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+
+            return mensaje;
+        }
     }
 }

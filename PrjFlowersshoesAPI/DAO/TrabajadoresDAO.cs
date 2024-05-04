@@ -52,7 +52,7 @@ namespace PrjFlowersshoesAPI.DAO
 
             try
             {
-                mensaje = SqlHelper.ExecuteNonQuery2(cad_sql, "PA_GRABAR_TRABAJADORES", parametros);
+                mensaje = SqlHelper.ExecuteNonQuery2(cad_sql, "PA_AGREGAR_TRABAJADORES", parametros);
             }
             catch (Exception ex)
             {
