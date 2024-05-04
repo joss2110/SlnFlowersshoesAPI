@@ -45,8 +45,6 @@ namespace PrjFlowersshoesAPI.DAO
             string mensaje = "";
 
             List<KeyValuePair<string, object>> parametros = new List<KeyValuePair<string, object>>();
-            parametros.Add(new KeyValuePair<string, object>("@codbar", obj.codbar));
-            parametros.Add(new KeyValuePair<string, object>("@imagen", obj.imagen));
             parametros.Add(new KeyValuePair<string, object>("@nompro", obj.nompro));
             parametros.Add(new KeyValuePair<string, object>("@precio", obj.precio));
             parametros.Add(new KeyValuePair<string, object>("@idtalla", obj.idtalla));
@@ -75,8 +73,6 @@ namespace PrjFlowersshoesAPI.DAO
 
             List<KeyValuePair<string, object>> parametros = new List<KeyValuePair<string, object>>();
             parametros.Add(new KeyValuePair<string, object>("@idpro", obj.idpro));
-            parametros.Add(new KeyValuePair<string, object>("@codbar", obj.codbar));
-            parametros.Add(new KeyValuePair<string, object>("@imagen", obj.imagen));
             parametros.Add(new KeyValuePair<string, object>("@nompro", obj.nompro));
             parametros.Add(new KeyValuePair<string, object>("@precio", obj.precio));
             parametros.Add(new KeyValuePair<string, object>("@idtalla", obj.idtalla));
@@ -106,6 +102,24 @@ namespace PrjFlowersshoesAPI.DAO
             {
                 SqlHelper.ExecuteNonQuery(cad_sql, "PA_ELIMINAR_PRODUCTOS", idpro);
                 mensaje = $"Se elimino correctamente al Producto: {idpro}";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+            //
+            return mensaje;
+
+
+        }
+
+        public string PA_RESTAURAR_PRODUCTOS(int idpro)
+        {
+            string mensaje = "";
+            try
+            {
+                SqlHelper.ExecuteNonQuery(cad_sql, "PA_RESTAURAR_PRODUCTOS", idpro);
+                mensaje = $"Se restauro correctamente al Producto: {idpro}";
             }
             catch (Exception ex)
             {

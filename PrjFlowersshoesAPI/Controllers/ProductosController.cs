@@ -26,8 +26,8 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // POST:Productos
-        [HttpPost("GrabarProductosPost")]
-        public async Task<ActionResult<String>> GrabarProductosPost([FromBody] Productos obj)
+        [HttpPost("GrabarProducto")]
+        public async Task<ActionResult<String>> GrabarProducto([FromBody] Productos obj)
         {
             string mensaje = await Task.Run(() => daopro.GrabarProductos(obj));
             //
@@ -35,8 +35,8 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // PUT:Productos
-        [HttpPut("ActualizarProductosPut")]
-        public async Task<ActionResult<String>> ActualizarProductosPut([FromBody] Productos obj)
+        [HttpPut("ActualizarProducto")]
+        public async Task<ActionResult<String>> ActualizarProducto([FromBody] Productos obj)
         {
             string mensaje = await Task.Run(() => daopro.ActualizarProductos(obj));
             //
@@ -44,7 +44,7 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // DELETE:Productos
-        [HttpDelete("DeleteProductos/{id}")]
+        [HttpDelete("DeleteProductos")]
         public async Task<ActionResult<String>> DeleteProductos(int id)
         {
             string mensaje = await Task.Run(() => daopro.EliminarProducto(id));
