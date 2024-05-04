@@ -38,6 +38,20 @@ namespace PrjFlowersshoesAPI.Controllers
             return Ok(mensaje);
         }
 
+        [HttpDelete("EliminarColor/{id}")]
+        public async Task<ActionResult<string>> EliminarColor(int id)
+        {
+            string mensaje = await Task.Run(() => daocolor.EliminarColor(id));
+            return Ok(mensaje);
+        }
+
+        [HttpDelete("RestaurarColor/{id}")]
+        public async Task<ActionResult<string>> RestaurarColor(int id)
+        {
+            string mensaje = await Task.Run(() => daocolor.RestaurarColor(id));
+            return Ok(mensaje);
+        }
+
 
 
     }

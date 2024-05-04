@@ -80,8 +80,25 @@ namespace PrjFlowersshoesAPI.DAO
 
             try
             {
-                SqlHelper.ExecuteNonQuery(cad_sql, "PA_LISTAR_COLORES", id);
+                SqlHelper.ExecuteNonQuery(cad_sql, "PA_ELIMINAR_COLOR", id);
                 mensaje = "Color Eliminado correctamente";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+
+            return mensaje;
+        }
+
+        public string RestaurarColor(int id)
+        {
+            string mensaje = "";
+
+            try
+            {
+                SqlHelper.ExecuteNonQuery(cad_sql, "PA_RESTAURAR_COLOR", id);
+                mensaje = "Color Restaurado correctamente";
             }
             catch (Exception ex)
             {
