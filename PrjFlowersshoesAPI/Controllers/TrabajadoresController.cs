@@ -8,11 +8,11 @@ namespace PrjFlowersshoesAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TrabajadoresAPIController : ControllerBase
+    public class TrabajadoresController : ControllerBase
     {
         private readonly TrabajadoresDAO daotra;
 
-        public TrabajadoresAPIController(TrabajadoresDAO daoTra)
+        public TrabajadoresController(TrabajadoresDAO daoTra)
         {
             daotra = daoTra;
         }
@@ -28,8 +28,8 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // POST:Trabajadores
-        // http://localhost:5050/api/TrabajadoresAPI/GrabarTrabajadoresPost
-        [HttpPost("GrabarTrabajadoresPost")]
+        // http://localhost:5050/api/TrabajadoresAPI/GrabarTrabajadores
+        [HttpPost("GrabarTrabajadores")]
         public async Task<ActionResult<String>> GrabarTrabajadoresPost([FromBody] Trabajadores obj)
         {
             string mensaje = await Task.Run(() => daotra.GrabarTrabajador(obj));
@@ -38,8 +38,8 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // PUT:Trabajadores
-        // http://localhost:5050/api/TrabajadoresAPI/ActualizarTrabajadoresPut
-        [HttpPut("ActualizarTrabajadoresPut")]
+        // http://localhost:5050/api/TrabajadoresAPI/ActualizarTrabajadores
+        [HttpPut("ActualizarTrabajadores")]
         public async Task<ActionResult<String>> ActualizarTrabajadoresPut([FromBody] Trabajadores obj)
         {
             string mensaje = await Task.Run(() => daotra.ActualizarTrabajador(obj));
