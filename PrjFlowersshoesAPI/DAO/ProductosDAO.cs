@@ -113,7 +113,7 @@ namespace PrjFlowersshoesAPI.DAO
 
         }
 
-        public string PA_RESTAURAR_PRODUCTOS(int idpro)
+        public string RestaurarProductos(int idpro)
         {
             string mensaje = "";
             try

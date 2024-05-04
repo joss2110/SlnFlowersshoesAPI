@@ -17,6 +17,7 @@ namespace PrjFlowersshoesAPI.Controllers
             daopro = daoPro;
         }
         // GET:Productos
+        //http://localhost:5050/api/Productos/GetProductos
         [HttpGet("GetProductos")]
         public async Task<ActionResult<List<PA_LISTAR_PRODUCTOS>>> GetProductos()
         {
@@ -26,6 +27,7 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // POST:Productos
+        //http://localhost:5050/api/Productos/GrabarProducto
         [HttpPost("GrabarProducto")]
         public async Task<ActionResult<String>> GrabarProducto([FromBody] Productos obj)
         {
@@ -35,6 +37,7 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // PUT:Productos
+        //http://localhost:5050/api/Productos/ActualizarProducto
         [HttpPut("ActualizarProducto")]
         public async Task<ActionResult<String>> ActualizarProducto([FromBody] Productos obj)
         {
@@ -44,10 +47,21 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // DELETE:Productos
+        //http://localhost:5050/api/Productos/DeleteProductos?id=1
         [HttpDelete("DeleteProductos")]
         public async Task<ActionResult<String>> DeleteProductos(int id)
         {
             string mensaje = await Task.Run(() => daopro.EliminarProducto(id));
+            //
+            return Ok(mensaje);
+        }
+
+        // RESTAURAR
+        //http://localhost:5050/api/Productos/RestaurarProductos?id=1
+        [HttpDelete("RestaurarProductos")]
+        public async Task<ActionResult<String>> RestaurarProductos(int id)
+        {
+            string mensaje = await Task.Run(() => daopro.RestaurarProductos(id));
             //
             return Ok(mensaje);
         }
