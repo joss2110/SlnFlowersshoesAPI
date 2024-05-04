@@ -8,11 +8,11 @@ namespace PrjFlowersshoesAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TrabajadoresAPIController : ControllerBase
+    public class TrabajadoresController : ControllerBase
     {
         private readonly TrabajadoresDAO daotra;
 
-        public TrabajadoresAPIController(TrabajadoresDAO daoTra)
+        public TrabajadoresController(TrabajadoresDAO daoTra)
         {
             daotra = daoTra;
         }
