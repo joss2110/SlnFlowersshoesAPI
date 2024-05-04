@@ -12,21 +12,21 @@ namespace PrjFlowersshoesAPI.DAO
             cad_sql = cfg.GetConnectionString("cn1");
         }
 
-        public List<DetalleIngresos> GetDetalleIngresos()
+        public List<PA_LISTAR_DETALLE_INGRESOS> GetDetalleIngresos()
         {
-            var list = new List<DetalleIngresos>();
+            var list = new List<PA_LISTAR_DETALLE_INGRESOS>();
 
             SqlDataReader rd = SqlHelper.ExecuteReader(cad_sql, "PA_LISTAR_DETALLE_INGRESOS");
             while (rd.Read())
             {
-                list.Add(new DetalleIngresos()
+                list.Add(new PA_LISTAR_DETALLE_INGRESOS()
                 {
                     idingre = rd.GetInt32(0),
-                    cantidad = rd.GetInt32(1),
-                    producto = rd.GetString(2),
-                    imagen = rd.GetString(3),
-                    color = rd.GetString(4),
-                    talla = rd.GetString(5)
+                    imagen = rd.GetString(1),
+                    nompro = rd.GetString(2),
+                    color = rd.GetString(3),
+                    talla = rd.GetString(4),
+                    cantidad = rd.GetInt32(5),
                 });
             }
 
@@ -34,5 +34,56 @@ namespace PrjFlowersshoesAPI.DAO
 
             return list;
         }
+
+        public string GrabarDetalleIngresos(DetalleIngresos obj)
+        {
+            string mensaje = "";
+            try
+            {
+                SqlHelper.ExecuteNonQuery(
+                cad_sql, "PA_GRABAR_DETALLE_INGRESOS",
+                obj.idingre, obj.idpro, obj.cantidad);
+                //
+                mensaje = $"DetalleIngreso agregado correctamente.";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+            return mensaje;
+        }
+
+        public string EliminarDetalleIngresos(DetalleIngresoParams obj)
+        {
+            string mensaje = "";
+            try
+            {
+                SqlHelper.ExecuteNonQuery(cad_sql,
+                    "PA_ELIMINAR_DETALLE_INGRESO", obj.idpro, obj.cantidad);
+                mensaje = $"DetalleIngreso eliminado correctamente.";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+            return mensaje;
+        }
+
+        public string RestaurarDetalleIngresos(DetalleIngresoParams obj)
+        {
+            string mensaje = "";
+            try
+            {
+                SqlHelper.ExecuteNonQuery(cad_sql,
+                    "PA_RESTAURAR_DETALLE_INGRESOS", obj.idpro, obj.cantidad);
+                mensaje = $"DetalleIngreso restaurado correctamente.";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+            return mensaje;
+        }
+
     }
 }
