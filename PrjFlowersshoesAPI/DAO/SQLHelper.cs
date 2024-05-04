@@ -184,7 +184,7 @@ using System.Collections;
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    // Agregar los parámetros a partir de la lista de pares de parámetro-valor
+                    
                     foreach (var parametro in parametros)
                     {
                         command.Parameters.AddWithValue(parametro.Key, parametro.Value);
@@ -196,7 +196,7 @@ using System.Collections;
 
                     command.ExecuteNonQuery();
 
-                    message = Convert.ToString(command.Parameters["@message"].Value);
+                    message = Convert.ToString(command.Parameters["@message"].Value)!;
                 }
             }
         }
@@ -207,6 +207,8 @@ using System.Collections;
 
         return message;
     }
+
+
 
 
     /// <summary>
