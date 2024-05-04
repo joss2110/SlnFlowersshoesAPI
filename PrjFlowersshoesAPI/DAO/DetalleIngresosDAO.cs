@@ -12,11 +12,11 @@ namespace PrjFlowersshoesAPI.DAO
             cad_sql = cfg.GetConnectionString("cn1");
         }
 
-        public List<PA_LISTAR_DETALLE_INGRESOS> GetDetalleIngresos()
+        public List<PA_LISTAR_DETALLE_INGRESOS> GetDetalleIngresos(int idingre)
         {
             var list = new List<PA_LISTAR_DETALLE_INGRESOS>();
 
-            SqlDataReader rd = SqlHelper.ExecuteReader(cad_sql, "PA_LISTAR_DETALLE_INGRESOS");
+            SqlDataReader rd = SqlHelper.ExecuteReader(cad_sql, "PA_LISTAR_DETALLE_INGRESOS", idingre);
             while (rd.Read())
             {
                 list.Add(new PA_LISTAR_DETALLE_INGRESOS()

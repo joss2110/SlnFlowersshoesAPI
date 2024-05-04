@@ -16,10 +16,10 @@ namespace PrjFlowersshoesAPI.Controllers
             daodetalleingreso = detalleingreso;
         }
 
-        [HttpGet("GetDetalleIngresos")]
-        public async Task<ActionResult<List<PA_LISTAR_INGRESOS>>> GetDetalleIngresos()
+        [HttpGet("GetDetalleIngresos/{idingre}")]
+        public async Task<ActionResult<List<PA_LISTAR_INGRESOS>>> GetDetalleIngresos(int idingre)
         {
-            var listado = await Task.Run(() => daodetalleingreso.GetDetalleIngresos());
+            var listado = await Task.Run(() => daodetalleingreso.GetDetalleIngresos(idingre));
 
             return Ok(listado);
         }
