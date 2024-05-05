@@ -44,7 +44,7 @@ namespace PrjFlowersshoesAPI.DAO
                 cad_sql, "PA_GRABAR_DETALLE_INGRESOS",
                 obj.idingre, obj.idpro, obj.cantidad);
                 //
-                mensaje = $"DetalleIngreso agregado correctamente.";
+                mensaje = $"Ingreso agregado correctamente.";
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace PrjFlowersshoesAPI.DAO
             {
                 SqlHelper.ExecuteNonQuery(cad_sql,
                     "PA_ELIMINAR_DETALLE_INGRESO", obj.idpro, obj.cantidad);
-                mensaje = $"DetalleIngreso eliminado correctamente.";
+                mensaje = $"Ingreso eliminado correctamente.";
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace PrjFlowersshoesAPI.DAO
             {
                 SqlHelper.ExecuteNonQuery(cad_sql,
                     "PA_RESTAURAR_DETALLE_INGRESOS", obj.idpro, obj.cantidad);
-                mensaje = $"DetalleIngreso restaurado correctamente.";
+                mensaje = $"Ingreso restaurado correctamente.";
             }
             catch (Exception ex)
             {
