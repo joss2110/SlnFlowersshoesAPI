@@ -23,10 +23,11 @@ namespace PrjFlowersshoesAPI.DAO
                 {
                     idingre = rd.GetInt32(0),
                     imagen = rd.GetString(1),
-                    nompro = rd.GetString(2),
-                    color = rd.GetString(3),
-                    talla = rd.GetString(4),
-                    cantidad = rd.GetInt32(5),
+                    idpro = rd.GetInt32(2),
+                    nompro = rd.GetString(3),
+                    color = rd.GetString(4),
+                    talla = rd.GetString(5),
+                    cantidad = rd.GetInt32(6),
                 });
             }
 

@@ -37,10 +37,10 @@ namespace PrjFlowersshoesAPI.Controllers
             return Ok(mensaje);
         }
 
-        [HttpPut("RestaurarIngresos/{id}")]
-        public async Task<ActionResult<string>> RestaurarIngresos(int id)
+        [HttpPut("RestaurarIngresos")]
+        public async Task<ActionResult<string>> RestaurarIngresos([FromBody] Ingresos obj)
         {
-            string mensaje = await Task.Run(() => daoingreso.RestaurarIngresos(id));
+            string mensaje = await Task.Run(() => daoingreso.RestaurarIngresos(obj));
             return Ok(mensaje);
         }
 

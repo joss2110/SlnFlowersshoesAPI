@@ -4,6 +4,7 @@
     {
         public int idingre { get; set; }
         public string imagen { get; set; }
+        public int idpro { get; set; }
         public string nompro { get; set; }
         public string color { get; set; }
         public string talla { get; set; }
