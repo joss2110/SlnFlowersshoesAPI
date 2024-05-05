@@ -208,7 +208,56 @@ using System.Collections;
         return message;
     }
 
+    /// <summary>
+    /// Ejecuta un SqlCommand (que devuelve un parámetro de salida) contra la base de datos especificada en 
+    /// la cadena de conexión. 
+    /// </summary>
+    /// <remarks>
+    /// Ejemplo:  
+    /// int res = ExecuteNonQuery3(connectionString, spName, new SqlParameter("@prodid", 24));
+    /// </remarks>
+    /// <param name="connectionString">una cadena de conexión válida para un SqlConnection</param>
+    /// <param name="spName">el nombre del procedimiento almacenado o comando T-SQL</param>
+    /// <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+    /// <returns>un entero que representa el id como parámetro de salida</returns>
 
+    public static int ExecuteNonQuery3(string connectionString, string spName, List<KeyValuePair<string, object>> parametros)
+    {
+        int res = 0;
+
+        try
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(spName, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+
+                    foreach (var parametro in parametros)
+                    {
+                        command.Parameters.AddWithValue(parametro.Key, parametro.Value);
+                    }
+
+                    SqlParameter messageParameter = new SqlParameter("@id", SqlDbType.Int);
+                    messageParameter.Direction = ParameterDirection.Output;
+                    command.Parameters.Add(messageParameter);
+
+                    command.ExecuteNonQuery();
+
+                    res = Convert.ToInt32(command.Parameters["@id"].Value)!;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            res = -1;
+        }
+
+        return res;
+    }
 
 
     /// <summary>

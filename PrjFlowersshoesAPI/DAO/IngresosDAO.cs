@@ -34,22 +34,24 @@ namespace PrjFlowersshoesAPI.DAO
             return list;
         }
 
-        public string GrabarIngresos(Ingresos obj)
+        public int GrabarIngresos(Ingresos obj)
         {
-            string mensaje = "";
+            int res = 0;
+
+            List<KeyValuePair<string, object>> parametros = new List<KeyValuePair<string, object>>();
+            parametros.Add(new KeyValuePair<string, object>("@fecha", obj.fecha));
+            parametros.Add(new KeyValuePair<string, object>("@descripcion", obj.descripcion));
+            parametros.Add(new KeyValuePair<string, object>("@idtra", obj.idtra));
+
             try
             {
-                SqlHelper.ExecuteNonQuery(
-                cad_sql, "PA_GRABAR_INGRESOS",
-                obj.fecha, obj.descripcion, obj.idtra);
-                //
-                mensaje = $"Ingreso agregado correctamente.";
+                res = SqlHelper.ExecuteNonQuery3(cad_sql, "PA_GRABAR_INGRESOS", parametros);
             }
             catch (Exception ex)
             {
-                mensaje = ex.Message;
+                res = -1;
             }
-            return mensaje;
+            return res;
         }
 
         public string EliminarIngresos(int idingre)

@@ -20,15 +20,14 @@ namespace PrjFlowersshoesAPI.Controllers
         public async Task<ActionResult<List<PA_LISTAR_INGRESOS>>> GetIngresos()
         {
             var listado = await Task.Run(() => daoingreso.GetIngresos());
-
             return Ok(listado);
         }
 
         [HttpPost("GrabarIngresos")]
-        public async Task<ActionResult<string>> GrabarIngresos([FromBody] Ingresos obj)
+        public async Task<ActionResult<int>> GrabarIngresos([FromBody] Ingresos obj)
         {
-            string mensaje = await Task.Run(() => daoingreso.GrabarIngresos(obj));
-            return Ok(mensaje);
+            int idingre = await Task.Run(() => daoingreso.GrabarIngresos(obj));
+            return Ok(idingre);
         }
 
         [HttpDelete("EliminarIngresos/{id}")]
