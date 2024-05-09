@@ -28,8 +28,9 @@ namespace PrjFlowersshoesAPI.DAO
                     nroDocumento = dr.GetString(3),
                     direccion = dr.GetString(4),
                     email = dr.GetString(5),
-                    nomRol = dr.GetString(6),
-                    estado = dr.GetString(7)
+                    pass = dr.GetString(6),
+                    nomRol = dr.GetString(7),
+                    estado = dr.GetString(8)
                 });
             }
             dr.Close();

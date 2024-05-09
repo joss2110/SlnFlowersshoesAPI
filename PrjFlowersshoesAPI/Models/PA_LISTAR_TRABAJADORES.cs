@@ -8,7 +8,8 @@
         public string nroDocumento { get; set; } = String.Empty;
         public string direccion { get; set; } = String.Empty;
         public string email { get; set; } = String.Empty;
-        public string nomRol { get; set; }
+        public string pass { get; set; } = String.Empty;
+        public string nomRol { get; set; } = String.Empty;
         public string estado { get; set; } = String.Empty;
     }
 }
