@@ -361,3 +361,13 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/PrjFlowersshoesAPI/DAO/ClientesDAO.cs
+/PrjFlowersshoesAPI/DAO/ProductosDAO.cs
+/PrjFlowersshoesAPI/Models/Productos.cs
+/PrjFlowersshoesAPI/Models/Productos.cs
+/PrjFlowersshoesAPI/Program.cs
+/PrjFlowersshoesAPI/Models/PA_LISTAR_DETALLE_INGRESOS.cs
+/PrjFlowersshoesAPI/Models/PA_LISTAR_INGRESOS.cs
+/PrjFlowersshoesAPI/Models/Productos.cs
+/PrjFlowersshoesAPI/Program.cs
+/PrjFlowersshoesAPI/DAO/SQLHelper.cs

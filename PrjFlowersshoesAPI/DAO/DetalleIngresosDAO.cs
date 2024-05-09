@@ -23,10 +23,11 @@ namespace PrjFlowersshoesAPI.DAO
                 {
                     idingre = rd.GetInt32(0),
                     imagen = rd.GetString(1),
-                    nompro = rd.GetString(2),
-                    color = rd.GetString(3),
-                    talla = rd.GetString(4),
-                    cantidad = rd.GetInt32(5),
+                    idpro = rd.GetInt32(2),
+                    nompro = rd.GetString(3),
+                    color = rd.GetString(4),
+                    talla = rd.GetString(5),
+                    cantidad = rd.GetInt32(6),
                 });
             }
 
@@ -44,7 +45,7 @@ namespace PrjFlowersshoesAPI.DAO
                 cad_sql, "PA_GRABAR_DETALLE_INGRESOS",
                 obj.idingre, obj.idpro, obj.cantidad);
                 //
-                mensaje = $"DetalleIngreso agregado correctamente.";
+                mensaje = $"Ingreso agregado correctamente.";
             }
             catch (Exception ex)
             {
@@ -60,7 +61,7 @@ namespace PrjFlowersshoesAPI.DAO
             {
                 SqlHelper.ExecuteNonQuery(cad_sql,
                     "PA_ELIMINAR_DETALLE_INGRESO", obj.idpro, obj.cantidad);
-                mensaje = $"DetalleIngreso eliminado correctamente.";
+                mensaje = $"Ingreso eliminado correctamente.";
             }
             catch (Exception ex)
             {
@@ -76,7 +77,7 @@ namespace PrjFlowersshoesAPI.DAO
             {
                 SqlHelper.ExecuteNonQuery(cad_sql,
                     "PA_RESTAURAR_DETALLE_INGRESOS", obj.idpro, obj.cantidad);
-                mensaje = $"DetalleIngreso restaurado correctamente.";
+                mensaje = $"Ingreso restaurado correctamente.";
             }
             catch (Exception ex)
             {

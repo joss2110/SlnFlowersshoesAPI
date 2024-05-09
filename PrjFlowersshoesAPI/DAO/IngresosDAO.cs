@@ -25,7 +25,13 @@ namespace PrjFlowersshoesAPI.DAO
                     fecha = rd.GetDateTime(1),
                     descripcion = rd.GetString(2),
                     estado = rd.GetString(3),
-                    nombres = rd.GetString(4)
+                    nombres = rd.GetString(4),
+                    imagen = rd.GetString(5),
+                    idpro = rd.GetInt32(6),
+                    nompro = rd.GetString(7),
+                    color = rd.GetString(8),
+                    talla = rd.GetString(9),
+                    cantidad = rd.GetInt32(10)
                 });
             }
 
@@ -34,22 +40,24 @@ namespace PrjFlowersshoesAPI.DAO
             return list;
         }
 
-        public string GrabarIngresos(Ingresos obj)
+        public int GrabarIngresos(Ingresos obj)
         {
-            string mensaje = "";
+            int res = 0;
+
+            List<KeyValuePair<string, object>> parametros = new List<KeyValuePair<string, object>>();
+            parametros.Add(new KeyValuePair<string, object>("@fecha", obj.fecha));
+            parametros.Add(new KeyValuePair<string, object>("@descripcion", obj.descripcion));
+            parametros.Add(new KeyValuePair<string, object>("@idtra", obj.idtra));
+
             try
             {
-                SqlHelper.ExecuteNonQuery(
-                cad_sql, "PA_GRABAR_INGRESOS",
-                obj.fecha, obj.descripcion, obj.idtra);
-                //
-                mensaje = $"Ingreso agregado correctamente.";
+                res = SqlHelper.ExecuteNonQuery3(cad_sql, "PA_GRABAR_INGRESOS", parametros);
             }
             catch (Exception ex)
             {
-                mensaje = ex.Message;
+                res = -1;
             }
-            return mensaje;
+            return res;
         }
 
         public string EliminarIngresos(int idingre)
@@ -68,13 +76,13 @@ namespace PrjFlowersshoesAPI.DAO
             return mensaje;
         }
 
-        public string RestaurarIngresos(int idingre)
+        public string RestaurarIngresos(Ingresos obj)
         {
             string mensaje = "";
             try
             {
                 SqlHelper.ExecuteNonQuery(cad_sql,
-                    "PA_RESTAURAR_INGRESOS", idingre);
+                    "PA_RESTAURAR_INGRESOS", obj.idingre);
                 mensaje = $"Ingreso restaurado correctamente.";
             }
             catch (Exception ex)
