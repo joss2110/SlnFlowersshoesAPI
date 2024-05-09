@@ -60,7 +60,7 @@ namespace PrjFlowersshoesAPI.DAO
             parametros.Add(new KeyValuePair<string, object>("@tipodocumento", obj.tipodocumento));
             parametros.Add(new KeyValuePair<string, object>("@nrodocumento", obj.nrodocumento));
             parametros.Add(new KeyValuePair<string, object>("@telefono", obj.telefono));
-            parametros.Add(new KeyValuePair<string, object>("@direccion", obj.direccion));
+            parametros.Add(new KeyValuePair<string, object>("@direccion",obj.direccion));
            
 
             try
@@ -86,7 +86,7 @@ namespace PrjFlowersshoesAPI.DAO
             parametros.Add(new KeyValuePair<string, object>("@tipodocumento", obj.tipodocumento));
             parametros.Add(new KeyValuePair<string, object>("@nrodocumento", obj.nrodocumento));
             parametros.Add(new KeyValuePair<string, object>("@telefono", obj.telefono));
-            parametros.Add(new KeyValuePair<string, object>("@direccion", obj.direccion));
+            parametros.Add(new KeyValuePair<string, object>("@direccion",obj.direccion));
             try
             {
                 mensaje = SqlHelper.ExecuteNonQuery2(cad_sql, "PA_MODIFICAR_CLIENTE", parametros);
