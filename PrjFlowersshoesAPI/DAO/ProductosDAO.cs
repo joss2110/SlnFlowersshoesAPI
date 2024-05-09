@@ -52,7 +52,6 @@ namespace PrjFlowersshoesAPI.DAO
             parametros.Add(new KeyValuePair<string, object>("@categoria", obj.categoria));
             parametros.Add(new KeyValuePair<string, object>("@temporada", obj.temporada));
             parametros.Add(new KeyValuePair<string, object>("@descripcion", obj.descripcion));
-            parametros.Add(new KeyValuePair<string, object>("@estado", obj.estado));
 
             try
             {
@@ -80,7 +79,6 @@ namespace PrjFlowersshoesAPI.DAO
             parametros.Add(new KeyValuePair<string, object>("@categoria", obj.categoria));
             parametros.Add(new KeyValuePair<string, object>("@temporada", obj.temporada));
             parametros.Add(new KeyValuePair<string, object>("@descripcion", obj.descripcion));
-            parametros.Add(new KeyValuePair<string, object>("@estado", obj.estado));
 
             try
             {
