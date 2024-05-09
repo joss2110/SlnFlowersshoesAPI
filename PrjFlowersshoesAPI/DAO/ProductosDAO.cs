@@ -1,4 +1,5 @@
 ﻿using PrjFlowersshoesAPI.Models;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace PrjFlowersshoesAPI.DAO
@@ -19,21 +20,34 @@ namespace PrjFlowersshoesAPI.DAO
             //
             while (dr.Read())
             {
-                lista.Add(new PA_LISTAR_PRODUCTOS()
-                {
-                    idpro = dr.GetInt32(0),
-                    codbar = dr.GetString(1),
-                    imagen = dr.GetString(2),
-                    nompro = dr.GetString(3),
-                    precio = dr.GetDecimal(4),
-                    talla = dr.GetString(5),
-                    color = dr.GetString(6),
-                    categoria = dr.GetString(7),
-                    temporada = dr.GetString(8),
-                    descripcion = dr.GetString(9),
-                    estado = dr.GetString(10)
-                });
+                var producto = new PA_LISTAR_PRODUCTOS();
+
+                producto.idpro = dr.GetInt32(0);
+
+                if (!dr.IsDBNull(1))
+                    producto.codbar = dr.GetString(1);
+                if (!dr.IsDBNull(2))
+                    producto.imagen = dr.GetString(2);
+                if (!dr.IsDBNull(3))
+                    producto.nompro = dr.GetString(3);
+                if (!dr.IsDBNull(4))
+                    producto.precio = dr.GetDecimal(4);
+                if (!dr.IsDBNull(5))
+                    producto.talla = dr.GetString(5);
+                if (!dr.IsDBNull(6))
+                    producto.color = dr.GetString(6);
+                if (!dr.IsDBNull(7))
+                    producto.categoria = dr.GetString(7);
+                if (!dr.IsDBNull(8))
+                    producto.temporada = dr.GetString(8);
+                if (!dr.IsDBNull(9))
+                    producto.descripcion = dr.GetString(9);
+                if (!dr.IsDBNull(10))
+                    producto.estado = dr.GetString(10);
+
+                    lista.Add(producto);
             }
+                   
             dr.Close();
             //
             return lista;
