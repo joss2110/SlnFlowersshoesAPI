@@ -5,7 +5,7 @@ namespace PrjFlowersshoesAPI.DAO
 {
     public class TrabajadoresDAO
     {
-        private string cad_sql;
+        private string cad_sql = "";
 
         public TrabajadoresDAO(IConfiguration cfg)
         {
@@ -20,18 +20,28 @@ namespace PrjFlowersshoesAPI.DAO
             //
             while (dr.Read())
             {
-                lista.Add(new PA_LISTAR_TRABAJADORES()
-                {
-                    idtra = dr.GetInt32(0),
-                    nombres = dr.GetString(1),
-                    tipoDocumento = dr.GetString(2),
-                    nroDocumento = dr.GetString(3),
-                    direccion = dr.GetString(4),
-                    email = dr.GetString(5),
-                    pass = dr.GetString(6),
-                    nomRol = dr.GetString(7),
-                    estado = dr.GetString(8)
-                });
+                var trabajador = new PA_LISTAR_TRABAJADORES();
+
+                trabajador.idtra = dr.GetInt32(0);
+
+                if (!dr.IsDBNull(1))
+                    trabajador.nombres = dr.GetString(1);
+                if (!dr.IsDBNull(2))
+                    trabajador.tipoDocumento = dr.GetString(2);
+                if (!dr.IsDBNull(3))
+                    trabajador.nroDocumento = dr.GetString(3);
+                if (!dr.IsDBNull(4))
+                    trabajador.direccion = dr.GetString(4);
+                if (!dr.IsDBNull(5))
+                    trabajador.email = dr.GetString(5);
+                if (!dr.IsDBNull(6))
+                    trabajador.pass = dr.GetString(6);
+                if (!dr.IsDBNull(7))
+                    trabajador.nomRol = dr.GetString(7);
+                if (!dr.IsDBNull(8))
+                    trabajador.estado = dr.GetString(8);
+
+                lista.Add(trabajador);
             }
             dr.Close();
             //
