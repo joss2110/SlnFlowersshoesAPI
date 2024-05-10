@@ -16,7 +16,7 @@ namespace PrjFlowersshoesAPI.DAO
         {
             var lista = new List<PA_LISTAR_TRABAJADORES>();
             //
-            SqlDataReader dr = SqlHelper.ExecuteReader(cad_sql, "PA_LISTAR_TRABAJADORES");
+            SqlDataReader dr = SqlHelper.ExecuteReader(cad_sql, "pa_listar_trabajadores");
             //
             while (dr.Read())
             {

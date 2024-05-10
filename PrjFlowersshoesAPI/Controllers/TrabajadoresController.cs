@@ -18,7 +18,7 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // GET:Trabajadores
-        // http://localhost:5050/api/TrabajadoresAPI/GetTrabajadores
+        // http://localhost:5050/api/Trabajadores/GetTrabajadores
         [HttpGet("GetTrabajadores")]
         public async Task<ActionResult<List<PA_LISTAR_TRABAJADORES>>> GetTrabajadores()
         {
@@ -28,7 +28,7 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // POST:Trabajadores
-        // http://localhost:5050/api/TrabajadoresAPI/GrabarTrabajadores
+        // http://localhost:5050/api/Trabajadores/GrabarTrabajadores
         [HttpPost("GrabarTrabajadores")]
         public async Task<ActionResult<String>> GrabarTrabajadoresPost([FromBody] Trabajadores obj)
         {
@@ -37,8 +37,8 @@ namespace PrjFlowersshoesAPI.Controllers
             return Ok(mensaje);
         }
 
-        // PUT:Trabajadores
-        // http://localhost:5050/api/TrabajadoresAPI/ActualizarTrabajadores
+        // PUT:Trabajadore
+        // http://localhost:5050/api/Trabajadores/ActualizarTrabajadores
         [HttpPut("ActualizarTrabajadores")]
         public async Task<ActionResult<String>> ActualizarTrabajadoresPut([FromBody] Trabajadores obj)
         {
@@ -48,7 +48,7 @@ namespace PrjFlowersshoesAPI.Controllers
         }
 
         // DELETE:Trabajadores
-        // http://localhost:5050/api/TrabajadoresAPI/DeleteTrabajadores/4
+        // http://localhost:5050/api/Trabajadores/DeleteTrabajadores/4
         [HttpDelete("DeleteTrabajadores/{id}")]
         public async Task<ActionResult<String>> DeleteTrabajadores(int id)
         {

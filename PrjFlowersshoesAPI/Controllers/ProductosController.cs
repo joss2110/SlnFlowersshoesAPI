@@ -48,7 +48,7 @@ namespace PrjFlowersshoesAPI.Controllers
 
         // DELETE:Productos
         //http://localhost:5050/api/Productos/DeleteProductos?id=1
-        [HttpDelete("DeleteProductos")]
+        [HttpDelete("DeleteProductos/{id}")]
         public async Task<ActionResult<String>> DeleteProductos(int id)
         {
             string mensaje = await Task.Run(() => daopro.EliminarProducto(id));
@@ -58,7 +58,7 @@ namespace PrjFlowersshoesAPI.Controllers
 
         // RESTAURAR
         //http://localhost:5050/api/Productos/RestaurarProductos?id=1
-        [HttpDelete("RestaurarProductos")]
+        [HttpDelete("RestaurarProductos/{id}")]
         public async Task<ActionResult<String>> RestaurarProductos(int id)
         {
             string mensaje = await Task.Run(() => daopro.RestaurarProductos(id));
