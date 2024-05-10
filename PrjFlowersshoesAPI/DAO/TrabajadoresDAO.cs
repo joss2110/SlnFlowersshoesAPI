@@ -35,9 +35,11 @@ namespace PrjFlowersshoesAPI.DAO
                 if (!dr.IsDBNull(5))
                     trabajador.email = dr.GetString(5);
                 if (!dr.IsDBNull(6))
-                    trabajador.nomRol = dr.GetString(6);
+                    trabajador.pass = dr.GetString(6);
                 if (!dr.IsDBNull(7))
-                    trabajador.estado = dr.GetString(7);
+                    trabajador.nomRol = dr.GetString(7);
+                if (!dr.IsDBNull(8))
+                    trabajador.estado = dr.GetString(8);
 
                 lista.Add(trabajador);
             }
