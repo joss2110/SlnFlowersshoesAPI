@@ -25,11 +25,13 @@ namespace FlowersshoesCoreMVC.DAO
                   new PA_LISTAR_STOCKS()
                   {
                       idstock = dr.GetInt32(0),
-                      nompro = dr.GetString(1),
-                      imagen = dr.GetString(2),
-                      color = dr.GetString(3),
-                      talla = dr.GetString(4),
-                      cantidad = dr.GetInt32(5),
+                      codbar = dr.GetString(1),
+                      nompro = dr.GetString(2),
+                      imagen = dr.GetString(3),
+                      color = dr.GetString(4),
+                      talla = dr.GetInt32(5),
+                      precio = dr.GetDecimal(6),
+                      cantidad = dr.GetInt32(7),
                   });
             }
             dr.Close();

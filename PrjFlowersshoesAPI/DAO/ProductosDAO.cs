@@ -33,7 +33,7 @@ namespace PrjFlowersshoesAPI.DAO
                 if (!dr.IsDBNull(4))
                     producto.precio = dr.GetDecimal(4);
                 if (!dr.IsDBNull(5))
-                    producto.talla = dr.GetString(5);
+                    producto.talla = dr.GetInt32(5);
                 if (!dr.IsDBNull(6))
                     producto.color = dr.GetString(6);
                 if (!dr.IsDBNull(7))
@@ -61,7 +61,6 @@ namespace PrjFlowersshoesAPI.DAO
             List<KeyValuePair<string, object>> parametros = new List<KeyValuePair<string, object>>();
             parametros.Add(new KeyValuePair<string, object>("@nompro", obj.nompro));
             parametros.Add(new KeyValuePair<string, object>("@precio", obj.precio));
-            parametros.Add(new KeyValuePair<string, object>("@idtalla", obj.idtalla));
             parametros.Add(new KeyValuePair<string, object>("@idcolor", obj.idcolor));
             parametros.Add(new KeyValuePair<string, object>("@categoria", obj.categoria));
             parametros.Add(new KeyValuePair<string, object>("@temporada", obj.temporada));
@@ -88,7 +87,7 @@ namespace PrjFlowersshoesAPI.DAO
             parametros.Add(new KeyValuePair<string, object>("@idpro", obj.idpro));
             parametros.Add(new KeyValuePair<string, object>("@nompro", obj.nompro));
             parametros.Add(new KeyValuePair<string, object>("@precio", obj.precio));
-            parametros.Add(new KeyValuePair<string, object>("@idtalla", obj.idtalla));
+            parametros.Add(new KeyValuePair<string, object>("@idtalla", obj.talla));
             parametros.Add(new KeyValuePair<string, object>("@idcolor", obj.idcolor));
             parametros.Add(new KeyValuePair<string, object>("@categoria", obj.categoria));
             parametros.Add(new KeyValuePair<string, object>("@temporada", obj.temporada));
