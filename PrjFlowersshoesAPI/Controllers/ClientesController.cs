@@ -24,6 +24,15 @@ namespace PrjFlowersshoesAPI.Controllers
             return Ok(listado);
         }
 
+        [HttpGet("GetCliente/{dni}")]
+        public async Task<ActionResult<List<Clientes>>> GetCliente(string dni)
+        {
+            var cliente = await Task.Run(() => daocli.GetCliente(dni));
+
+            return Ok(cliente);
+        }
+
+
         [HttpPost("GrabarClientes")]
 
         public async Task<ActionResult<string>> GrabarCliente([FromBody] Clientes obj)

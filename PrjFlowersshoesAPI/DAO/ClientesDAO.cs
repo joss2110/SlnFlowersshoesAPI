@@ -75,6 +75,47 @@ namespace PrjFlowersshoesAPI.DAO
             return mensaje;
         }
 
+        public Clientes GetCliente(string dni)
+        {
+            string mensaje = "";
+            Clientes cliente = null; 
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cad_sql))
+                {
+                    conexion.Open();
+                    string query = "SELECT idcli, nomcli, apellidos, nrodocumento FROM tb_clientes WHERE nrodocumento = @dni";
+
+                    using (SqlCommand comando = new SqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@dni", dni);
+
+                        using (SqlDataReader reader = comando.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                cliente = new Clientes
+                                {
+                                    idcli = Convert.ToInt32(reader["idcli"]),
+                                    nomcli = reader["nomcli"].ToString(),
+                                    apellidos = reader["apellidos"].ToString(),
+                                    nrodocumento = reader["nrodocumento"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                Console.WriteLine($"Error: {mensaje}");
+            }
+
+            return cliente;
+        }
+
         public string ActualizarCliente(Clientes obj)
         {
             string mensaje = "";
